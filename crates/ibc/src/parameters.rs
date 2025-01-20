@@ -13,14 +13,8 @@ pub struct IbcParameters {
     pub default_per_epoch_throughput_limit: Amount,
 }
 
-#[derive(Clone, Debug, BorshSerialize, BorshDeserialize)]
-/// IBC rate limits for a token
-pub struct IbcTokenRateLimits {
-    /// Global mint limit for the token
-    pub mint_limit: Amount,
-    /// Throughput limit per epoch
-    pub throughput_per_epoch_limit: Amount,
-}
+/// Alias for a specific token's IBC limits
+pub type IbcTokenRateLimits = IbcParameters;
 
 impl Default for IbcParameters {
     fn default() -> Self {

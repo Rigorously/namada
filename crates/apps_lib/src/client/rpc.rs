@@ -2476,21 +2476,21 @@ pub async fn query_ibc_rate_limits(
     let native_token = context.native_token();
 
     let IbcTokenRateLimits {
-        mint_limit,
-        throughput_per_epoch_limit,
+        default_mint_limit,
+        default_per_epoch_throughput_limit,
     } = unwrap_sdk_result(
         rpc::query_ibc_rate_limits(context.client(), &args.token).await,
     );
 
     let (mint_str, throughput_str) = if args.token == native_token {
         (
-            mint_limit.to_string_native(),
-            throughput_per_epoch_limit.to_string_native(),
+            default_mint_limit.to_string_native(),
+            default_per_epoch_throughput_limit.to_string_native(),
         )
     } else {
         (
-            mint_limit.to_string(),
-            throughput_per_epoch_limit.to_string(),
+            default_mint_limit.to_string(),
+            default_per_epoch_throughput_limit.to_string(),
         )
     };
     display_line!(
