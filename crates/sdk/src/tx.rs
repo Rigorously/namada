@@ -1506,8 +1506,8 @@ pub async fn build_redelegation(
         if !tx_args.force {
             return Err(Error::from(
                 TxSubmitError::IncomingRedelIsStillSlashable(
-                    src_validator.clone(),
                     owner.clone(),
+                    src_validator.clone(),
                 ),
             ));
         }
